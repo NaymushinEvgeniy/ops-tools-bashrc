@@ -16,9 +16,9 @@ jobs:
 
       - name: Update Gist file
         env:
-          GIST_ID: 45adca3a88af909a0bd62f3107e2874a # Замените на ваш Gist ID
+          GIST_ID: 45adca3a88af909a0bd62f3107e2874a 
           GIST_FILENAME: "GIGA .bashrc File"
-          FILE_PATH: GIGA_File.bashrc # Путь к файлу в репозитории
+          FILE_PATH: GIGA_File.bashrc 
           GH_TOKEN: ${{ secrets.GIST_TOKEN }}
         run: |
           CONTENT=$(cat "$FILE_PATH" | jq -Rs .)
