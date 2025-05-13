@@ -1,0 +1,29 @@
+name: Sync to Gist
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - GIGA_File.bashrc
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update Gist file
+        env:
+          GIST_ID: 45adca3a88af909a0bd62f3107e2874a # Замените на ваш Gist ID
+          GIST_FILENAME: "GIGA .bashrc File"
+          FILE_PATH: GIGA_File.bashrc # Путь к файлу в репозитории
+          GH_TOKEN: ${{ secrets.GIST_TOKEN }}
+        run: |
+          CONTENT=$(cat "$FILE_PATH" | jq -Rs .)
+          curl -X PATCH \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/gists/$GIST_ID \
+            -d "{\"files\": {\"$GIST_FILENAME\": {\"content\": $CONTENT}}}"
