@@ -54,8 +54,6 @@ if [[ $imode >0 ]]; then bind "set bell-style visible"; fi
 # Customizing PROMPT
 #######################################################
 
-#PROMPT_COMMAND='PS1_CMD1=$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR == 1{ split($2, a," ");print a[1]}'"'"')'; PS1='[\[\e[38;5;196m\]\u\[\e[0m\]@\H|${PS1_CMD1}] \t (\[\e[4m\]\w\[\e[0m\])\ '
-
 alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
 
 function __setprompt
@@ -83,7 +81,6 @@ function __setprompt
 
 	# Show error exit code if there is one
 	if [[ $LAST_COMMAND != 0 ]]; then
-		# PS1="\[${RED}\](\[${LIGHTRED}\]ERROR\[${RED}\])-(\[${LIGHTRED}\]Exit Code \[${WHITE}\]${LAST_COMMAND}\[${RED}\])-(\[${LIGHTRED}\]"
 		PS1="\[${DARKGRAY}\](\[${LIGHTRED}\]ERROR\[${DARKGRAY}\])-(\[${RED}\]Exit Code \[${LIGHTRED}\]${LAST_COMMAND}\[${DARKGRAY}\])-(\[${RED}\]"
 		if [[ $LAST_COMMAND == 1 ]]; then
 			PS1+="General error"
@@ -124,12 +121,11 @@ function __setprompt
 	fi
 
 	# External IP
-	PS1_CMD1="\[${MAGENTA}\]$(ip route get 1.1.1.1 | awk -F'src ' "'"'"NR == 1{ split($2, a,' ');print a[1]}"'"'")"
-	#PS1_CMD1='\[${MAGENTA}\]$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR == 1{ split($2, a," ");print a[1]}'"'"')'
+	PS1_CMD1="$(ip route get 1.1.1.1 | awk '{print $7}')"
 	# CPU
-	PS1_CMD2="\[${MAGENTA}\]CPU $(cpu)%"
+	PS1_CMD2="CPU $(cpu)%"
 	# Summary Naming
-	PS1+="[\[\e[38;5;196m\]\u\[\e[0m\]@\H|${PS1_CMD1}|${PS1_CMD2}] \t (\[\e[4m\]\w\[\e[0m\])\ "
+	PS1+="[\[\e[38;5;196m\]\u\[\e[0m\]@\H|${PS1_CMD1}|${PS1_CMD2}] (\[\e[4m\]\w\[\e[0m\]) "
 
 	# Date
 	PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
