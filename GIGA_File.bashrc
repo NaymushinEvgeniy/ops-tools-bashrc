@@ -121,19 +121,24 @@ function __setprompt
 	fi
 
 	# External IP
-	PS1_CMD1="$(ip route get 1.1.1.1 | awk '{print $7}')"
+	PS1_CMD1="\[${YELLOW}\]$(ip route get 1.1.1.1 | awk '{print $7}')"
 	# CPU
-	PS1_CMD2="CPU $(cpu)%"
-	# Summary Naming
-	PS1+="[\[\e[38;5;196m\]\u\[\e[0m\]@\H|${PS1_CMD1}|${PS1_CMD2}] (\[\e[4m\]\w\[\e[0m\]) "
-
+	PS1_CMD2="\[${WHITE}\]|CPU $(cpu)%"
+	# Homecatalog with formating
+	PS1_CMD3="(\[\e[4m\]\w\[\e[0m\])"
 	# Date
-	PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
-	PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])-" # Time
+	#PS1_CMD4="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')"
+	PS1_CMD4="(\[${CYAN}\]$(date "+%a %d %B %Y")"
+
+	# Time
+	PS1_CMD5="${CYAN} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])"
+	# Summary Naming
+	# \u - username; \H - hostname; \w -home catalog
+	PS1+="[\[${RED}\]\u\[${WHITE}\]@\H|${PS1_CMD1}${PS1_CMD2}] ${PS1_CMD3} ${PS1_CMD4} ${PS1_CMD5}"
 
 	# Skip to the next line
 	PS1+="\n"
-
+	# Color arrow (>) in the begin command line
 	if [[ $EUID -ne 0 ]]; then
 		PS1+="\[${GREEN}\]>\[${NOCOLOR}\] " # Normal user
 	else
