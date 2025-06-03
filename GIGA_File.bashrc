@@ -48,7 +48,13 @@ shopt -s checkwinsize
 stty -ixon
 
 # Disable the bell in autocomplete
-if [[ $imode >0 ]]; then bind "set bell-style visible"; fi
+if [[ $imode > 0 ]]; then bind "set bell-style visible"; fi
+
+# Ignore Upper and Lower case
+if [[ $imode > 0 ]]; then bind "set completion-ignore-case on"; fi
+
+# One press Tab for Autocompleet
+if [[ $imode > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 #######################################################
 # Customizing PROMPT
