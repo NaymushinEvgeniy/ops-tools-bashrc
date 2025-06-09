@@ -137,7 +137,7 @@ function __setprompt
 	PS1_CMD4="(\[${CYAN}\]$(date "+%a %d %B %Y")"
 
 	# Time
-	PS1_CMD5="${CYAN} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])"
+	PS1_CMD5="${CYAN} $(date +'%-I':%M:%S%P)\[${WHITE}\])"
 	# Summary Naming
 	# \u - username; \H - hostname; \w -home catalog
 	PS1+="[\[${RED}\]\u\[${WHITE}\]@\H|${PS1_CMD1}${PS1_CMD2}] ${PS1_CMD3} ${PS1_CMD4} ${PS1_CMD5}"
