@@ -165,6 +165,6 @@ PROMPT_COMMAND='__setprompt'
 
 # Default editor
 if [ -f /usr/bin/vim ]; then
-	export EDITOR=nano
-	export VISUAL=nano
+	export EDITOR=vim
+	export VISUAL=vim
 fi
