@@ -134,7 +134,7 @@ function __setprompt
 	PS1_CMD3="(\[\e[4m\]\w\[\e[0m\])"
 	# Date
 	#PS1_CMD4="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')"
-	PS1_CMD4="(\[${CYAN}\]$(date "+%a %d %B %Y")"
+	PS1_CMD4="(\[${CYAN}\]$(date '+%a %d %B %Y')"
 
 	# Time
 	PS1_CMD5="${CYAN} $(date +'%-I':%M:%S%P)\[${WHITE}\])"
