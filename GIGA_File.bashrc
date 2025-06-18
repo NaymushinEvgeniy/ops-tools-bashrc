@@ -21,6 +21,25 @@ elif [ -f /etc/bash_completion ]; then
 fi
 
 #######################################################
+# DEVOPS ALIAS'S
+#######################################################
+
+# Eza (A modern replacement for ls): https://github.com/eza-community/eza
+# Install Eza on Ubuntu/Debian:
+# sudo mkdir -p /etc/apt/keyrings
+# wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+# echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+# sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+# sudo apt update
+# sudo apt install -y eza
+if [ -f /usr/bin/eza ]; then
+	alias ls="eza --icons=always --tree --level=1"
+fi
+
+# My custom aliases:
+alias c="clear"
+
+#######################################################
 # EXPORTS
 ######################################################
 
