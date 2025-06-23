@@ -36,6 +36,8 @@ if [ -f /usr/bin/eza ]; then
 	alias ls="eza --icons=always --tree --level=1"
 fi
 
+# Custom date
+alias da='date "+%Y-%m-%d %A %T %Z"'
 # My custom aliases:
 alias c="clear"
 
