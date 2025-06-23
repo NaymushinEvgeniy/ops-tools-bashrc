@@ -39,8 +39,16 @@ fi
 # Custom date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 # My custom aliases:
-alias c="clear"
-
+alias cls="clear"
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -iv'
+alias ps='ps auxf'
+alias ping='ping -c 10'
+alias less='less -R'
+alias apt='sudo apt'
+alias vi='vim'
+alias svi='sudo vi'
 #######################################################
 # EXPORTS
 ######################################################
