@@ -33,7 +33,7 @@ fi
 # sudo apt update
 # sudo apt install -y eza
 if [ -f /usr/bin/eza ]; then
-	alias ls="eza --icons=always --tree --level=1"
+	alias le="eza --icons=always --tree --level=1"
 fi
 
 # Custom date
@@ -49,6 +49,20 @@ alias less='less -R'
 alias apt='sudo apt'
 alias vi='vim'
 alias svi='sudo vi'
+
+# Change directory
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# Change to previos directory
+alias bd='cd "$OLDPWD"'
+
+# Alias's for multiple directory listing commands
+alias la='ls -Alh' # show hidden files
+alias lx='ls -lXBh' # sort by extension
+
 #######################################################
 # EXPORTS
 ######################################################
