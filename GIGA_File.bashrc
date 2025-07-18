@@ -218,3 +218,4 @@ if [ -f /usr/bin/vim ]; then
 	export EDITOR=vim
 	export VISUAL=vim
 fi
+
