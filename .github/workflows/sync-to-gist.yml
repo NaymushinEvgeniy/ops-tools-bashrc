@@ -16,8 +16,9 @@ jobs:
         
       - name: Check of correct Bash syntax
         run: |
-          ls -la
-          echo $SHELL
+          cp GIGA_File.bashrc ~/.bashrc
+          bash
+          echo "Status of syntax check is" $?
 
       - name: Update Gist file
         env:
