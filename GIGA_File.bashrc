@@ -36,6 +36,9 @@ if [ -f /usr/bin/eza ]; then
 	alias le="eza --icons=always --tree --level=1"
 fi
 
+# Edit this .bashrc file
+alias ebrc='edit ~/.bashrc'
+
 # Custom date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 # My custom aliases:
@@ -69,6 +72,13 @@ alias h="history | grep "
 # Search running processes
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
+
+# Show disk usage in a folder
+alias diskspace="du -S | sort -n -r | more"
+
+# Work with archives
+alias mktar='tar -cvf'
+alias untar='tar -xvf'
 
 #######################################################
 # EXPORTS
