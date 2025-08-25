@@ -309,3 +309,18 @@ pwdtail ()
 {
 	pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
 }
+
+# Table of the network config
+# Show current network information
+netinfo ()
+{
+	echo "--------------- Network Information ---------------"
+	/sbin/ifconfig | awk /'inet addr/ {print $2}'
+	echo ""
+	/sbin/ifconfig | awk /'Bcast/ {print $3}'
+	echo ""
+	/sbin/ifconfig | awk /'inet addr/ {print $4}'
+
+	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+	echo "---------------------------------------------------"
+}
