@@ -303,3 +303,9 @@ mkdirg ()
 	mkdir -p $1
 	cd $1
 }
+
+# Last 2 fields of pwd
+pwdtail ()
+{
+	pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
+}
