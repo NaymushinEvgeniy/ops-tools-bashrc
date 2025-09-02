@@ -186,6 +186,8 @@ function __setprompt
 		PS1=""
 	fi
 
+	# Spec symbols with unicolor
+  PS1_SUFF="\[${WHITE}\]\["
 	# External IP
 	PS1_CMD1="\[${YELLOW}\]$(ip route get 1.1.1.1 | awk '{print $7}')"
 	# CPU
@@ -199,6 +201,8 @@ function __setprompt
 	# Time
 	PS1_CMD5="${CYAN} $(date +'%-I':%M:%S%P)\[${WHITE}\])"
 	# Summary Naming
+	# Preformating:
+  PS1+="${PS1_SUFF}"
 	# \u - username; \H - hostname; \w -home catalog
 	PS1+="[\[${RED}\]\u\[${WHITE}\]@\H|${PS1_CMD1}${PS1_CMD2}] ${PS1_CMD3} ${PS1_CMD4} ${PS1_CMD5}"
 
