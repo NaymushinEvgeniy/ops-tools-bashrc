@@ -328,3 +328,18 @@ netinfo ()
 	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
 	echo "---------------------------------------------------"
 }
+
+install_bashrc_deps ()
+{
+    local dtype
+    dtype=$(cat /etc/os-release | grep -oP '(?<=^ID=).+')
+    if [ $dtype == "redhat" ]; then
+		sudo dnf install tree jq
+	elif [ $dtype == "debian" || $dtype == "ubuntu" ]; then
+		sudo apt install tree jq
+	elif [ $dtype == "arch" ]; then
+		sudo pacman -S tree jq
+	else
+		echo "Unknown distribution"
+	fi
+}
