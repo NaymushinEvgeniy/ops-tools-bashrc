@@ -343,3 +343,12 @@ install_bashrc_deps ()
 		echo "Unknown distribution"
 	fi
 }
+
+# Remove whitspaces(for scripts)
+trim()
+{
+	local el=$@
+	el="${el#"${el%%[![:space:]]*}"}"
+	el="${el%"${el##*[![:space:]]}"}" 
+	echo -n "$el"
+}
